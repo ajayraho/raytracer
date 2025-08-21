@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" height="200" width="300">
+   <rect x="20" y="150" fill="white" width="250" height="5" />
+   <line x1="20" y1="20" x2="140" y2="150" stroke="white" />
+   <line x1="260" y1="20" x2="140" y2="150" stroke="white" />
+   <line x1="120" y1="20" x2="140" y2="150" stroke="white" />
+   <line x1="210" y1="20" x2="140" y2="150" stroke="white" />
+   <line x1="140" y1="20" x2="140" y2="150" stroke="white" />
+   <text style="font-family:monospace" x="39%" y="51%" fill="white">θ</text>
+   <text style="font-family:monospace" x="20%" y="20%" fill="white">L</text>
+   <text style="font-family:monospace" x="42%" y="20%" fill="white">N</text>
+   <text style="font-family:monospace" x="36%" y="35%" fill="white">H</text>
+   <text style="font-family:monospace" x="60%" y="20%" fill="white">V</text>
+   <text style="font-family:monospace" x="90%" y="20%" fill="white">R</text>
+</svg>

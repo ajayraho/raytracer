@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" height="300" width="300">
+   <rect width="300" height="300" fill="white" fill-opacity="0.5"/>
+   <rect width="300" height="200" y="45" fill="black"/>
+   <circle r="50" cx="50%" cy="50%" fill="red" />
+   <text style="font-family:monospace" x="75.5%" y="15" fill="black">y:-1.000</text>
+   <text style="font-family:monospace" x="75.5%" y="40" fill="black">y:-0.625</text>
+   <text style="font-family:monospace" x="75.5%" y="260" fill="black">y:+0.625</text>
+   <text style="font-family:monospace" x="75.5%" y="297" fill="black">y:+1.000</text>
+   <text style="font-family:monospace" x="0%" y="50%" fill="black">x:-1.000</text>
+   <text style="font-family:monospace" x="75.5%" y="50%" fill="black">x:+1.000</text>
+   <text style="font-family:monospace" x="49%" y="51%" fill="black">0</text>
+</svg>

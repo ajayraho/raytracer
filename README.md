@@ -193,9 +193,15 @@ sphere\_to\_ray = ray_{origin} - sphere_{center}
 #### Ray-Sphere Interesection Formula
 [Derivation](#derivation)
 ```math
-a = 1 \\
-b = 2*ray_{dir} \cdot \hat{sphere\_to\_ray} \\
-c = \hat{sphere\_to\_ray} \cdot \hat{sphere\_to\_ray} - (radius)^2 \\
+a = 1
+```
+```math
+b = 2*ray_{dir} \cdot sphere\_to\_ray
+```
+```math
+c = sphere\_to\_ray \cdot sphere\_to\_ray - (radius)^2
+```
+```math
 discriminant = b^2 - 4ac
 ```
 
@@ -257,19 +263,8 @@ becomes bottom edge (maximum y), and `-0.625` becomes top edge.
 
 <br/>
 <br/>
-<div style="display:flex;width:100%;justify-content:center;">
-<svg height="300" width="300" style="display:flex;">
-   <rect width="300" height="300" fill="white" fill-opacity="0.5"/>
-   <rect width="300" height="200" y="45" fill="black"/>
-   <circle r="50" cx="50%" cy="50%" fill="red" />
-   <text style="font-family:Consolas" x="75.5%" y="15" fill="white">y:-1.000</text>
-   <text style="font-family:Consolas" x="75.5%" y="40" fill="white">y:-0.625</text>
-   <text style="font-family:Consolas" x="75.5%" y="260" fill="white">y:+0.625</text>
-   <text style="font-family:Consolas" x="75.5%" y="297" fill="white">y:+1.000</text>
-   <text style="font-family:Consolas" x="0%" y="50%" fill="white">x:+1.000</text>
-   <text style="font-family:Consolas" x="75.5%" y="50%" fill="white">x:+1.000</text>
-   <text style="font-family:Consolas" x="49%" y="51%" fill="white">0</text>
-</svg>
+<div align="center">
+<img src="readme/aspectRatio.svg" alt="Aspect Ratio Visualization" width="300" height="300">
 </div>
 <br/>
 <br/>
@@ -354,19 +349,8 @@ If $M_{diffuse}$ is 0, the material is rough ($Color_{surface}$ approaches to `(
 Simple Phong Shading model states that the light reflected varies based on the angle between the difference between the view direction and the direction of the perfect reflection.
 
 Let $L$ be the incident light vector on the surface, making $\theta$ angle to the $N$ normal. $V$ is where the viewer is (ray towards viewer). $R$ represents the unit vector directed towards the ideal specular reflection,i.e. gad the viewer be at $R$, he would have seen a sharp reflection in his eyes.
-<div style="display:flex;width:100%;justify-content:center;">
-<svg height="200" width="300">
-   <rect x="20" y="150" fill="white" width="250" height="5" />
-   <line x1="20" y1="20" x2="140" y2="150" stroke="white" />
-   <line x1="260" y1="20" x2="140" y2="150" stroke="white" />
-   <line x1="210" y1="20" x2="140" y2="150" stroke="white" />
-   <line x1="140" y1="20" x2="140" y2="150" stroke="white" />
-   <text style="font-family:Consolas" x="39%" y="51%" fill="white">θ</text>
-   <text style="font-family:Consolas" x="20%" y="20%" fill="white">L</text>
-   <text style="font-family:Consolas" x="42%" y="20%" fill="white">N</text>
-   <text style="font-family:Consolas" x="60%" y="20%" fill="white">V</text>
-   <text style="font-family:Consolas" x="90%" y="20%" fill="white">R</text>
-</svg>
+<div align="center">
+<img src="readme/reflection1.svg" alt="Reflection" width="300" height="200">
 </div>
 
 Note - Though $L$ depicts the incident light ray vector, its direction is reversed as we only consider the light’s interaction with the surface at the point of contact, and we’re interested in the angle it makes with the normal.
@@ -374,24 +358,11 @@ Note - Though $L$ depicts the incident light ray vector, its direction is revers
 We define $$Phong Term = (V.R)^S$$
 where $S$ is used to adjust how strongly the reflection is happening (material's specular coefficient; shininess).
 
-**Issue**: The dot product in the above must not be negative. But angle between $\bold V$ **and** $\bold R$ can be larger than $90 deg$, i.e. the viewer is free to move, and the dot product becomes negative.
+**Issue**: The dot product in the above must not be negative. But angle between $ V$ **and** $ R$ can be larger than $90 deg$, i.e. the viewer is free to move, and the dot product becomes negative.
 
-Hence, the **Phong-Blinn Modification** calculates a halfway vector (normalized) $H$, which is half way between the **viewer $\bold V$ and the light source $\bold L$**, i.e. the angle between the viewer and the light source is cut into half by $H$. We then replace $V$ with $H$.
-<div style="display:flex;width:100%;justify-content:center;">
-<svg height="200" width="300">
-   <rect x="20" y="150" fill="white" width="250" height="5" />
-   <line x1="20" y1="20" x2="140" y2="150" stroke="white" />
-   <line x1="260" y1="20" x2="140" y2="150" stroke="white" />
-   <line x1="120" y1="20" x2="140" y2="150" stroke="white" />
-   <line x1="210" y1="20" x2="140" y2="150" stroke="white" />
-   <line x1="140" y1="20" x2="140" y2="150" stroke="white" />
-   <text style="font-family:Consolas" x="39%" y="51%" fill="white">θ</text>
-   <text style="font-family:Consolas" x="20%" y="20%" fill="white">L</text>
-   <text style="font-family:Consolas" x="42%" y="20%" fill="white">N</text>
-   <text style="font-family:Consolas" x="36%" y="35%" fill="white">H</text>
-   <text style="font-family:Consolas" x="60%" y="20%" fill="white">V</text>
-   <text style="font-family:Consolas" x="90%" y="20%" fill="white">R</text>
-</svg>
+Hence, the **Phong-Blinn Modification** calculates a halfway vector (normalized) $H$, which is half way between the **viewer $ V$ and the light source $ L$**, i.e. the angle between the viewer and the light source is cut into half by $H$. We then replace $V$ with $H$.
+<div align="center">
+<img src="readme/reflection2.svg" alt="Reflection" width="300" height="200">
 </div>
 
 
